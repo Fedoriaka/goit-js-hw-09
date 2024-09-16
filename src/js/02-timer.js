@@ -29,12 +29,14 @@ flatpickr(input, {
 });
 
 butStart.addEventListener('click', function (e) {
+  butStart.disabled = true;
   const start = selectedDate.getTime();
   const intervalId = setInterval(() => {
     const currtime = new Date().getTime();
     const deltatime = start - currtime;
     if (deltatime <= 0) {
       clearInterval(intervalId);
+      butStart.disabled = false;
       return;
     }
     const time = convertMs(deltatime);
